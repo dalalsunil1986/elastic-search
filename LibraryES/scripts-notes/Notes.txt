@@ -1,0 +1,25 @@
+match:
+  * search for a specific / set of fields
+  * returns if any term matches in the query.
+    E.g: "address.area": "Sri Nagar" - returns if any area contains Sri or Nagar.
+      
+match_all:
+  * return from all the available documents
+  
+match_phrase:
+  * returns result if exact phrase matches, else no result.
+    E.g: "address.area": "Sri Nagar" - returns if any area = 'Sri Nagar'
+
+must:
+  * applies AND condition
+  
+must_not:
+  * applies AND NOT condition
+  
+should:
+  * applies OR Condition
+
+_score:
+  * numberic value
+  * high score: more relevant, less score: less relevant
+

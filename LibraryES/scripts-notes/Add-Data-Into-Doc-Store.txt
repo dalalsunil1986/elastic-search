@@ -1,0 +1,40 @@
+Normal Upload:
+
+PUT http://127.0.0.1:9200/library/users/
+{
+  "userid": "AD001",
+  "usertype": "Admin",
+  "firstname": "Ranjith",
+  "lastname": "Sekar",
+  "address": {
+    "doorno": "22",
+    "street": "Gandhi Street",
+    "area": "MGR Nagar",
+    "pincode": "600078",
+    "city": "Chennai",
+    "country": "India"
+  },
+  "mobile": "9600096000",
+  "hobbies": [
+    "vollyball",
+    "music"
+  ]
+}
+------------------------------------
+
+Bulk Upload: (json should be in single line)
+
+POST http://127.0.0.1:9200/_bulk
+{"index":{"_index":"library", "_type":"users"}
+{ "userid": "AD001", "usertype": "Admin", "firstname": "Ranjith", "lastname": "Sekar", "address": { "doorno": "22", "street": "Gandhi Street", "area": "MGR Nagar", "pincode": "600078", "city": "Chennai", "country": "India" }, "mobile": "9600096000", "hobbies": [ "vollyball", "music" ] }
+{"index":{"_index":"library", "_type":"users"}
+{ "userid": "STU001", "usertype": "Student", "firstname": "Mahendra", "lastname": "Singh", "address": { "doorno": "33", "street": "Nehru Street", "area": "Bala Nagar", "pincode": "200088", "city": "Hydrabad", "country": "India" }, "mobile": "8800088000", "hobbies": [ "cricket", "signing" ] }
+{"index":{"_index":"library", "_type":"users"}
+{ "userid": "STU002", "usertype": "Student", "firstname": "Sachin", "lastname": "Tendulkar", "address": { "doorno": "44", "street": "Navar Street", "area": "Singh Nagar", "pincode": "500032", "city": "Vizhag", "country": "India" }, "mobile": "7700077000", "hobbies": [ "cricket", "music" ] }
+{"index":{"_index":"library", "_type":"users"}
+{ "userid": "STU003", "usertype": "Student", "firstname": "Yuvraj", "lastname": "Singh", "address": { "doorno": "22", "street": "Bavah Street", "area": "Sri Nagar", "pincode": "700032", "city": "Patna", "country": "India" }, "mobile": "2200033000", "hobbies": [ "cricket", "dance" ] }
+{"index":{"_index":"library", "_type":"users"}
+{ "userid": "STU004", "usertype": "Student", "firstname": "Rahul", "lastname": "Dravid", "address": { "doorno": "12", "street": "Kennday Street", "area": "Satya Nagar", "pincode": "400067", "city": "Bangalore", "country": "India" }, "mobile": "7400044000", "hobbies": [ "reading books", "football" ] }
+{"index":{"_index":"library", "_type":"users"}
+{ "userid": "STU005", "usertype": "Student", "firstname": "Rohit", "lastname": "Sharma", "address": { "doorno": "34", "street": "Baliah Street", "area": "Manchi Nagar", "pincode": "300011", "city": "Mumbai", "country": "India" }, "mobile": "7100071000", "hobbies": [ "cricket", "chess" ] }
+------------------------------------

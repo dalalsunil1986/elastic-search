@@ -1,0 +1,182 @@
+POST /library/users/_search
+{
+  "query": {"match_all": {}}
+}
+------------------------------------------------------------------------------------
+
+POST /library/users/_search
+{
+   "query": {
+      "match_all": {}
+   },   
+   "size": 2
+}
+------------------------------------------------------------------------------------
+SIZE:
+
+POST /library/users/_search
+{
+   "query": {
+      "match_all": {}
+   },
+   "from": 2,
+   "size": 2
+}
+
+------------------------------------------------------------------------------------
+SORTING
+
+POST /library/users/_search
+{
+   "sort": [
+      {
+         "firstname": {
+            "order": "asc"
+         }
+      }
+   ],
+   "query": {
+      "match_all": {}
+   }
+}
+
+------------------------------------------------------------------------------------
+
+POST /library/users/_search
+{
+   "fields": [
+      "firstname",
+      "lastname",
+      "userid",
+      "usertype"
+   ],
+   "query": {
+      "match_phrase": {
+         "firstname": "Ranjith"
+      }
+   }
+}
+
+------------------------------------------------------------------------------------
+Required fields alone in the response
+POST /library/users/_search
+{
+   "query": {
+      "match_all": {}
+   },
+   "_source": [
+      "firstname",
+      "lastname"
+   ]
+}
+
+
+------------------------------------------------------------------------------------
+AND Condition
+
+POST /library/users/_search
+{
+   "query": {
+      "bool": {
+         "must": [
+            {
+               "match": {
+                  "hobbies": "music"
+               }
+            },
+            {
+               "match": {
+                  "address.city": "Chennai"
+               }
+            }
+         ]
+      }
+   }
+}
+Result: 1 Record
+
+------------------------------------------------------------------------------------
+NOT Condition
+
+POST /library/users/_search
+{
+   "query": {
+      "bool": {
+         "must_not": [
+            {
+               "match": {
+                  "hobbies": "music"
+               }
+            },
+            {
+               "match": {
+                  "address.city": "Chennai"
+               }
+            }
+         ]
+      }
+   }
+}
+Result : 4 Records (other than the doc contains city=chennai and hobbies=music)
+
+------------------------------------------------------------------------------------
+OR Condition
+
+POST /library/users/_search
+{
+   "query": {
+      "bool": {
+         "should": [
+            {
+               "match": {
+                  "hobbies": "music"
+               }
+            },
+            {
+               "match": {
+                  "address.city": "Chennai"
+               }
+            }
+         ]
+      }
+   }
+}
+Result : 2 Records (matches any doc with city=chennai or hobbies=music
+------------------------------------------------------------------------------------
+
+POST /library/users/_search
+{
+   "query": {
+      "bool": {
+         "must": [
+            {
+               "match": {
+                  "hobbies": "music"
+               }
+            }
+         ],
+         "must_not": [
+            {
+               "match": {
+                  "address.city": "Chennai"
+               }
+            }
+         ]
+      }
+   }
+}
+Result : 1 Record - any record contains hobbies=music and not from chennai city
+
+------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------
+
+
+
+
+------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------------------------------------------

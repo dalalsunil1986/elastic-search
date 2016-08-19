@@ -1,0 +1,14 @@
+POST /library/users/_search
+{
+   "sort": [
+      {
+         "firstname": {
+            "order": "asc"
+         }
+      }
+   ],
+   "query": {
+      "match_all": {}
+   }
+}
+

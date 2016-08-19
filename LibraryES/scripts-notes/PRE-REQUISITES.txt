@@ -1,0 +1,2 @@
+1. Install Elastic Search
+2. Install Chrome Sense Plugin/ Install Fiddler Tool
